@@ -1,0 +1,16 @@
+{% extends "header.html" %} {% block content %}
+
+{% if error_msg %}
+  <b class="text-red-400">
+    {{ error_msg }}
+  </b>
+{% endif %}
+
+<div>information for {{artist_name}}</div>
+<div>albums</div>
+<ul>
+{% for album in artist_albums %}
+    <li><a href="{{ url_for('main.album_detail', album_id=album['id']) }}">{{album["name"]}}</a></li>
+{% endfor %}
+</ul>
+{% endblock content %}
